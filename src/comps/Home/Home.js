@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import { Menu, Breadcrumb } from 'antd';
-import { Layout } from 'antd';
+import { Menu, Layout, Breadcrumb, Button, Dropdown, Icon } from 'antd';
 import './Home.scss';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
 
 class Home extends Component {
+    handleMenuClick = (event) => {
+        console.log(event.domEvent.target.innerHTML);   
+    }
     render() {
+        const optionsMenu = (
+            <Menu onClick={this.handleMenuClick}>
+              <Menu.Item key="1">个人中心</Menu.Item>
+              <Menu.Item key="2">注销</Menu.Item>
+            </Menu>
+        );
         return (
             <div className="home">
                 <Layout>
                     <Header>
                         <div className="logo" />
                         <div className="title">北京交通大学下一代互联网互联设备国家工程实验室</div>
+                        <div className="options">
+                            <Dropdown overlay={optionsMenu}>
+                                <Button>
+                                    <Icon type="user"/>admin<Icon type="caret-down" />
+                                </Button>
+                            </Dropdown>
+                        </div>
                     </Header>
                     <Layout>
                         <Sider
