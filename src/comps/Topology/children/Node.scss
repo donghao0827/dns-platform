@@ -1,0 +1,59 @@
+.node {
+    position: relative;
+    width: 100px;
+    height: 120px;
+    .icon {
+        height: 80px;
+        width: 80px;
+        background-image: url('../../../statics/image/node.png');
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .option {
+        width: 60px;
+        height: 25px;
+        border-radius: 3px;
+        background: #FF6600;
+        margin: auto;
+        margin-top: 5px;
+        color: #fff;
+        text-align: center;
+        line-height: 25px;
+    }
+    .info {
+        position: absolute;
+        left: 40px;
+        top: 40px;
+        background: #6699FF;
+        width: 180px;
+        padding: 5px 10px;
+        border-radius: 5px; 
+        li {
+            display: flex;
+            label {
+                display: block;
+                width: 80px;
+            }
+            line-height: 2;
+        }
+    }
+    .opt {
+        position: absolute;
+        width: 100px;
+        left: 100px;
+        top: 10px;
+        line-height: 2;
+        background: #9966FF;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px 5px;
+        li {
+            border-bottom: 1px solid #636363;
+        }
+        li:last-child {
+            border-bottom: 0;
+        }
+    }
+}
