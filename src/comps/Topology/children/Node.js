@@ -26,7 +26,7 @@ class Node extends React.Component {
 
     getInfo = () => {
         return (
-            <ul className="info">
+            <ul className={ "info" + (this.state.showInfo ? " show" : "") }>
                 <li><label>管理机构:</label><span>CNNIC</span></li>
                 <li><label>位置:</label><span>中国北京</span></li>
                 <li><label>域名:</label>.CN</li>  
@@ -36,7 +36,7 @@ class Node extends React.Component {
 
     getOption = () => {
         return (
-            <ul className="opt">
+            <ul className={ "opt" + (this.state.showOption ? " show" : "") }>
                 <li>新建域名</li>
                 <li>注销域名</li>
                 <li>修改域名</li>

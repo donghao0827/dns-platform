@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import { Menu, Layout, Breadcrumb, Button, Dropdown, Icon } from 'antd';
 import './Home.scss';
+import '../LeftNav/LeftNav';
+import LeftNav from '../LeftNav/LeftNav';
+import Topology from '../Topology/Topology';
+import Personal from '../Personal/Personal';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
+const leftNav = {
+    "1": "Personal",
+    "2": "Topology"
+}
 
 class Home extends Component {
-    handleMenuClick = (event) => {
-        console.log(event.domEvent.target.innerHTML);   
+    constructor(props) {
+        super(props);
+        this.state = {
+            nav: "Personal"
+        }
     }
+    handleMenuClick = (event) => {
+       this.setState({
+           nav: leftNav[event.key]
+       })
+    }
+
     render() {
         const optionsMenu = (
             <Menu onClick={this.handleMenuClick}>
@@ -18,7 +35,7 @@ class Home extends Component {
         );
         return (
             <div className="home">
-                <Layout>
+                <Layout style={{ height: "100%" }}>
                     <Header>
                         <div className="logo" />
                         <div className="title">北京交通大学下一代互联网互联设备国家工程实验室</div>
@@ -30,29 +47,21 @@ class Home extends Component {
                             </Dropdown>
                         </div>
                     </Header>
-                    <Layout>
+                    <Layout style={{ height: "100%" }}>
                         <Sider
                             width={200}
                             style={{ background: '#fff' }}
                         >
-                            <Menu
-                                mode="inline"
-                                defaultSelectedKeys={['1']}
-                                defaultOpenKeys={['sub1']}
-                                style={{ height: '100%' }}
-                                >
-                                <Menu.Item key="1">系统基础信息</Menu.Item>
-                                <Menu.Item key="2">系统拓扑</Menu.Item>
-                                <Menu.Item key="3">域名查询</Menu.Item>
-                                <SubMenu key="4" title={<span>域名管理</span>}>
-                                    <Menu.Item key="sub1">添加域名</Menu.Item>
-                                    <Menu.Item key="sub2">更新域名</Menu.Item>
-                                    <Menu.Item key="sub3">删除域名</Menu.Item>
-                                </SubMenu>
-                                <Menu.Item key="5">域名审批</Menu.Item>
-                            </Menu>
+                            <LeftNav 
+                                handleClick = { this.handleMenuClick.bind(this) }
+                            />
                         </Sider>
-                        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}></Content>
+                        <Layout style={{ padding: '0 24px 24px', height: "100%" }}>
+                            <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280, height: "100%" }}>
+                                { this.state.nav === "Personal" ? <Personal /> : null }
+                                { this.state.nav === "Topology" ? <Topology /> : null }
+                            </Content>
+                        </Layout>
                     </Layout>
                 </Layout>
             </div>  

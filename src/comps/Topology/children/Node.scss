@@ -56,4 +56,12 @@
             border-bottom: 0;
         }
     }
+    .show {
+        animation: show 0.25s;
+    }
+}
+
+@keyframes show {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); } 
 }
